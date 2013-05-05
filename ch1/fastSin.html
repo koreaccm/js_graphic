@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+			<title>Fast Sine Demo</title>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	
+		<style type="text/css">
+			#draw-target {
+				width: 480px;
+				height: 320px;
+				background-color:#000;
+				position: relative;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			$(document).ready(function () {
+				(function() {
+					var fastSin = function (steps) {
+						var table = [], 
+							ang = 0, 
+							angStep = (Math.PI *2) / steps;
+						do {
+							table.push(Math.sin(ang));
+							ang += angStep
+						} while (ang < Math.PI * 2);
+						return table;
+					
+						var sinTable = fastSin(4096), 
+							$drawTarget = $('#draw-target'),
+							divs = '',
+							i, bars, x = 0;
+					};
+					
+					var drawGraph = function(ang, freq, height) {
+						var height2 = height * 2;
+						for (var i  = 0; i < 480; i++) {
+							bars[i].style.top = 160 - height + sinTable[(ang + (i * freq)) & 4095] * height +'px'
+							bar[i].style.height = height2 + 'pw';	
+						}
+					}
+				});
+			});
+		</script>
+	</head>
+</html>
